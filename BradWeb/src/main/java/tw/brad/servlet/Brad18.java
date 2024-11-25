@@ -30,6 +30,10 @@ public class Brad18 extends HttpServlet {
 			request.setAttribute("y", y);
 			request.setAttribute("result", result);
 		} catch (Exception e) {
+			request.setAttribute("x", "");
+			request.setAttribute("y", "");
+			request.setAttribute("result", "");
+			
 		}
 	
 		// 呈現View
