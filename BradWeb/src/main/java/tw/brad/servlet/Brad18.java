@@ -33,11 +33,11 @@ public class Brad18 extends HttpServlet {
 			request.setAttribute("x", "");
 			request.setAttribute("y", "");
 			request.setAttribute("result", "");
-			
 		}
+		request.setAttribute("view", "view1");
 	
 		// 呈現View
-		RequestDispatcher dispatcher = request.getRequestDispatcher("Brad19");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("Brad20");
 		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();

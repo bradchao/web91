@@ -13,8 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tw.brad.apis.BradUtils;
 
-@WebServlet("/Brad19")
-public class Brad19 extends HttpServlet {
+@WebServlet("/Brad20")
+public class Brad20 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String x = (String)request.getAttribute("x");
 		String y = (String)request.getAttribute("y");
@@ -23,7 +23,11 @@ public class Brad19 extends HttpServlet {
 		
 		try {
 			String webPage = BradUtils.loadView(view);
-			String webView = String.format(webPage, x, y, result);
+			
+			String webView = webPage.replaceAll("@x@", x)
+							.replaceAll("@result@", result)
+							.replaceAll("@y@", y);
+			
 			response.getWriter().print(webView);
 		}catch(Exception e) {
 			response.getWriter().print("ERROR!");
