@@ -23,6 +23,7 @@ public class Brad19 extends HttpServlet {
 		
 		try {
 			String webPage = BradUtils.loadView(view);
+			// webPage => %s, %s, %s
 			String webView = String.format(webPage, x, y, result);
 			response.getWriter().print(webView);
 		}catch(Exception e) {
