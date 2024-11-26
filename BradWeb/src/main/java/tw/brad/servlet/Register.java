@@ -14,7 +14,11 @@ public class Register extends HttpServlet {
 	private MemberDB memberDB;
 	
 	public Register() {
-		memberDB = new MemberDB();
+		try {
+			memberDB = new MemberDB();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 	
 	
@@ -24,11 +28,15 @@ public class Register extends HttpServlet {
 		String passwd = request.getParameter("passwd");
 		String name = request.getParameter("name");
 		
-		if (memberDB.isAccountExist(account)) {
-			if (memberDB.addMember(account, passwd, name)) {
-				response.sendRedirect("brad25.jsp");
-			}else {
-				response.sendRedirect("brad24.jsp?errType=2");
+		if (!memberDB.isAccountExist(account)) {
+			try {
+				if (memberDB.addMember(account, passwd, name)) {
+					response.sendRedirect("brad25.jsp");
+				}else {
+					response.sendRedirect("brad24.jsp?errType=2");
+				}
+			}catch(Exception e) {
+				System.out.println(e);
 			}
 		}else {
 			response.sendRedirect("brad24.jsp?errType=1");
