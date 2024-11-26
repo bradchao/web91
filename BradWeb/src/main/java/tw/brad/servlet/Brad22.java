@@ -1,10 +1,13 @@
 package tw.brad.servlet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -38,11 +41,16 @@ public class Brad22 extends HttpServlet {
 		}
 		
 		//-------------------------------
+		RequestDispatcher dispatcher = request.getRequestDispatcher("sform.html");
+		
+		
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		dispatcher.include(request, response);
+		
 		out.print("<table border='1' width='100%'>");
-		out.print("<tr><th>ID</th><th>Name</th><th>Feature</th><th>Addr.</th></tr>");
+		out.print("<tr><th>ID</th><th>Name</th><th>Feature</th><th>Addr.</th><th>Image</th></tr>");
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -54,6 +62,19 @@ public class Brad22 extends HttpServlet {
 			
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("name");
+				String feature = rs.getString("feature");
+				String addr = rs.getString("addr");
+				String picurl = rs.getString("picurl");
+				
+				out.println("<tr>");
+				out.printf("<td>%s</td>\n", id);
+				out.printf("<td>%s</td>\n", name);
+				out.printf("<td>%s</td>\n", feature);
+				out.printf("<td>%s</td>\n", addr);
+				out.printf("<td><img src='%s' width='160px' height='120px' /></td>\n", picurl);
+				out.println("</tr>");
 				
 			}
 		}catch(Exception e) {
