@@ -38,7 +38,20 @@
 					
 					for (int j=START; j<START+COLS; j++){
 						int newj = j + k * COLS;
-						out.println("\t\t\t\t<td bgcolor='pink'>");
+						if (k % 2 == 0){
+							if (j % 2 == 0){
+								out.println("\t\t\t\t<td bgcolor='yellow'>");
+							}else{
+								out.println("\t\t\t\t<td bgcolor='pink'>");
+							}
+						}else{
+							if (j % 2 != 0){
+								out.println("\t\t\t\t<td bgcolor='yellow'>");
+							}else{
+								out.println("\t\t\t\t<td bgcolor='pink'>");
+							}
+							
+						}
 						for (int i=1; i<=9; i++){
 							int r = newj * i;
 							out.println(String.format("\t\t\t\t\t%d x %d = %d<br />", newj, i, r));
