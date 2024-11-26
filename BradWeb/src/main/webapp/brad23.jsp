@@ -10,11 +10,14 @@
 
 		<table border='1' width='100%'>
 			<tr>
-				<td>
-					2 x 1 = 2<br />
-					2 x 1 = 2<br />
-					2 x 1 = 2<br />
-				</td>
+				<%
+					out.println("<td>");
+					for (int i=1; i<=9; i++){
+						int r = 2 * i;
+						out.println(String.format("2 x %d = %d<br />", i, r));
+					}
+					out.println("</td>");
+				%>
 				<td>
 					2 x 1 = 2<br />
 					2 x 1 = 2<br />
