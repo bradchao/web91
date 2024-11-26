@@ -8,5 +8,7 @@
 	
 	request.setAttribute("name", name);
 	request.setAttribute("bike", b1);
+	
+	
 %>    
 <jsp:forward page="brad30.jsp"></jsp:forward>	
