@@ -7,7 +7,7 @@
 	*
 	*/
 	String name = request.getParameter("name");
-	name.charAt(0);
+	//name.charAt(0);
 	if (name == null) name = "World";
 %>
 <!--  -->
