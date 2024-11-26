@@ -22,7 +22,8 @@ public class Register extends HttpServlet {
 	}
 	
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String account = request.getParameter("account");
 		String passwd = request.getParameter("passwd");
