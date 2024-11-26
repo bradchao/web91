@@ -36,6 +36,9 @@ public class Member {
 		this.id = id;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return account + ":" + name;
+	}
 	
 }
