@@ -42,6 +42,7 @@
 				<th>Tel</th>
 				<th>Address</th>
 				<th>Feature</th>
+				<th>Picture</th>
 			</tr>
 			<c:forEach items="${rs.rows }" var="food">
 				<tr>
@@ -50,6 +51,7 @@
 					<td>${food.tel }</td>
 					<td>${food.addr }</td>
 					<td>${food.feature }</td>
+					<td><img src='${food.picurl }' width='160px' height='120px' /></td>
 				</tr>
 			</c:forEach>
 		
