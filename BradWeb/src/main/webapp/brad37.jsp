@@ -10,6 +10,14 @@
 	b1.upSpeed().upSpeed().downSpeed();
 	b1.upSpeed();b1.upSpeed();b1.upSpeed();
 	
+	String name2 = "Eric";
+	request.setAttribute("name", name2);
+	
+	String name3 = "Andy";
+	session.setAttribute("name", name3);
+	
+	String name4 = "Mark";
+	application.setAttribute("name", name4);
 
 %>    
 <!DOCTYPE html>
@@ -21,5 +29,11 @@
 	<body>
 	Name: ${name }<br />
 	Bike: ${bike }<br />
+	PageContext Name: ${pageScope.name }<br />
+	Request Name: ${requestScope.name }<br />
+	Session Name: ${sessionScope.name }<br />
+	Application Name: ${applicationScope.name }<br />
+	
+	
 	</body>
 </html>

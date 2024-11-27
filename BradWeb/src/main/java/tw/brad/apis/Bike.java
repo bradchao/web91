@@ -6,7 +6,7 @@ public class Bike extends Object implements Serializable{
     protected double speed;
 
     public Bike(){
-        System.out.println("Bike()");
+        //System.out.println("Bike()");
     }
     public Bike(double speed){
         System.out.println("Bike(double)");
