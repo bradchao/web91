@@ -29,7 +29,7 @@
 	<body>
 	
 	
-	<c:set var="allgift" value="${BradUtils.parseGift(data) }"></c:set>
+	<c:set var="allgift" value="${BradUtils.parseGiftV2(data) }"></c:set>
 	
 	<c:catch var="err2">
 		<c:forEach items="${allgift }" var="gift">

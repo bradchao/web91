@@ -3,8 +3,14 @@ package tw.brad.apis;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
+
+import javax.naming.LinkLoopException;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -68,6 +74,27 @@ public class BradUtils {
 		
 		return allgift;
 	}
+	
+	public static List<Map<String,String>> parseGiftV2(String json){
+		LinkedList<Map<String, String>> allgift = new LinkedList<>();
+		JSONArray root = new JSONArray(json);
+		for (int i=0; i<root.length(); i++) {
+			JSONObject gift = root.getJSONObject(i);
+			
+			HashMap<String, String> map = new HashMap<>();
+			
+			map.put("name", gift.getString("Name"));
+			map.put("feature", gift.getString("Feature"));
+			map.put("pic", gift.getString("Column1"));
+			
+			allgift.add(map);
+		}
+		
+		return allgift;
+	}
+	
+	
+	
 	
 	
 }
