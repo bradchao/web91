@@ -12,9 +12,18 @@
 </c:catch>
 
 <c:set var="rpp">10</c:set>
+
+<c:set var="sql">SELECT * FROM gift</c:set>
+<sql:query var="result">
+	${sql }
+</sql:query>
+${result.rowCount / rpp + 1 }
+<c:set var="total">${BradUtils.toTotal(result.rowCount, rpp) }</c:set>
+
+
 <c:set var="page">${empty param.page?1:param.page }</c:set>
 <c:set var="prev">${page==1? 1 : page - 1 }</c:set>
-<c:set var="next">${page + 1 }</c:set>
+<c:set var="next">${page == total? page : page + 1 }</c:set>
 <c:set var="start">${(page - 1) * rpp }</c:set>
 
 <c:set var="sql">SELECT * FROM gift LIMIT ${start }, ${rpp }</c:set>

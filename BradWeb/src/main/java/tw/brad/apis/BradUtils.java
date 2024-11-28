@@ -59,7 +59,7 @@ public class BradUtils {
 		
 		int len = root.length(); 
 		System.out.println(len);
-		SortedMap<String,String>[] allgift = new TreeMap[len];
+		TreeMap<String,String>[] allgift = new TreeMap[len];
 		
 		for (int i=0; i<len; i++) {
 			JSONObject gift = root.getJSONObject(i);
