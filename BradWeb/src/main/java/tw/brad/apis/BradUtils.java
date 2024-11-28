@@ -3,6 +3,11 @@ package tw.brad.apis;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class BradUtils {
 	public static String loadView(String view) throws Exception {
@@ -42,5 +47,27 @@ public class BradUtils {
 	public static String createScore() {
 		return (int)(Math.random()*101)+"";
 	}
+	
+	public static SortedMap[] parseGift(String json) {
+		JSONArray root = new JSONArray(json);
+		
+		int len = root.length(); 
+		System.out.println(len);
+		SortedMap<String,String>[] allgift = new TreeMap[len];
+		
+		for (int i=0; i<len; i++) {
+			JSONObject gift = root.getJSONObject(i);
+			
+			TreeMap<String, String> map = new TreeMap<String, String>();
+			map.put("name", gift.getString("Name"));
+			map.put("feature", gift.getString("Feature"));
+			map.put("pic", gift.getString("Column1"));
+			
+			allgift[i] = map;
+		}
+		
+		return allgift;
+	}
+	
 	
 }

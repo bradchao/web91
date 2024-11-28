@@ -18,7 +18,7 @@
 			/>
 		<sql:update var="n">
 			UPDATE cust SET name='bbbbb', tel='7654321' WHERE id = 6
-		</sql:update>		
+		</sql:update>
 		<sql:update var="n1">
 			DELETE FROM cust WHERE id >= 8
 		</sql:update>		
