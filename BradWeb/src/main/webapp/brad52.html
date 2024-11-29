@@ -8,6 +8,27 @@
 		$('#id1').load(url);
 		//console.log(url);
 	}
+	
+	function test2(){
+		var url = 'brad53.jsp?max=' + $('#max').val();
+		$.get(url, function(data, status){
+			if (status == 'success'){
+				$('#id1').html(data);	
+			}
+		});
+	}
+	
+	function test3(){
+		$.post('brad53.jsp', {
+			'max' : $('#max').val()
+		}, function(data, status){
+			if (status == 'success'){
+				$('#id1').html(data);	
+			}			
+		});
+	}
+	
+	
 </script>
 
 
