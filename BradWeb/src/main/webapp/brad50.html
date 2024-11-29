@@ -10,11 +10,17 @@
 			document.getElementById('id3').innerHTML = '*';
 		}else if (xhttp.readyState == 4){
 			document.getElementById('id4').innerHTML = '*';
+			if (xhttp.status == 200){
+				document.getElementById('lottery1').innerHTML = xhttp.responseText;
+			}
 		}
 	}
 	
 	xhttp.onload = function(){
 		console.log("back");
+		if (xhttp.status == 200){
+			document.getElementById('lottery2').innerHTML = xhttp.responseText;
+		}
 	}
 	
 	
@@ -30,3 +36,7 @@
 2. <span id="id2"></span><br />
 3. <span id="id3"></span><br />
 4. <span id="id4"></span><br />
+<hr />
+Lottery1: <span id='lottery1'></span><br />
+Lottery2: <span id='lottery2'></span>
+
