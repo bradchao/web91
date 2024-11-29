@@ -2,6 +2,21 @@
 <html>
 	<head>
 		<meta charset='UTF-8'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script>
+			function search(){
+				$.ajax({
+					url : 'brad56.jsp',
+					method : 'get',
+					data: {
+						'orderid' : $('#orderId').val()
+					},
+					success: function(data){
+						
+					}
+				});
+			}
+		</script>
 		
 	</head>
 	<body>
