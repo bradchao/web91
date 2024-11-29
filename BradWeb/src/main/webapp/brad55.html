@@ -12,6 +12,20 @@
 						'orderid' : $('#orderId').val()
 					},
 					success: function(data){
+						//console.log(data);
+						$('#employee').html(data.Employee);
+						$('#customer').html(data.Customer);
+						
+						$('#table').empty();
+						$(data.details).each(function(i, detail){
+							$('#table').append(
+								'<tr>' +
+								'<td>' + detail.ProductName + '</td>' + 
+								'<td>' + detail.UnitPrice + '</td>' + 
+								'<td>' + detail.Quantity + '</td>' + 
+								'</tr>'
+							);
+						});
 						
 					}
 				});
@@ -28,7 +42,7 @@
 		Employee: <span id='employee'></span><br />
 		Customer: <span id='customer'></span><br />
 		<hr />
-		<table border='1' width='100%'>
+		<table border='1' width='100%' id='table'>
 		</table>
 	</body>
 </html>

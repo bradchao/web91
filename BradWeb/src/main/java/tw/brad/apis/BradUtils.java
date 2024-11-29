@@ -93,7 +93,28 @@ public class BradUtils {
 		return allgift;
 	}
 	
-	
+	public static String order2JSON(SortedMap[] rows) {
+		JSONObject root = new JSONObject();
+		if (rows.length > 0) {
+			root.put("Customer", rows[0].getOrDefault("CustomerID", ""));
+			root.put("Employee", rows[0].getOrDefault("EmployeeID", ""));
+			
+			JSONArray details = new JSONArray();
+			for (int i=0; i<rows.length; i++) {
+				SortedMap<String, String> row = rows[i];
+				JSONObject detail = new JSONObject();
+				detail.put("ProductID", row.getOrDefault("ProductID", ""));
+				detail.put("ProductName", row.getOrDefault("ProductName", ""));
+				detail.put("UnitPrice", row.getOrDefault("UnitPrice", ""));
+				detail.put("Quantity", row.getOrDefault("Quantity", ""));
+				
+				details.put(detail);
+			}
+			
+			root.put("details", details);
+		}
+		return root.toString();
+	}
 	
 	
 	
