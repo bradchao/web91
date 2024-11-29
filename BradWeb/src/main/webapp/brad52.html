@@ -10,7 +10,7 @@
 	}
 	
 	function test2(){
-		var url = 'brad53.jsp?max=' + $('#max').val();
+		var url = 'brad54.jsp?max=' + $('#max').val();
 		$.get(url, function(data, status){
 			if (status == 'success'){
 				$('#id1').html(data);	
@@ -19,7 +19,7 @@
 	}
 	
 	function test3(){
-		$.post('brad53.jsp', {
+		$.post('brad54.jsp', {
 			'max' : $('#max').val()
 		}, function(data, status){
 			if (status == 'success'){
@@ -27,7 +27,18 @@
 			}			
 		});
 	}
-	
+	function test4(){
+		$.ajax({
+			url : 'brad53.jsp',
+			method : 'get',
+			data: {
+				'max' : $('#max').val()
+			},
+			success: function(data){
+				$('#id1').html(data);
+			}
+		});
+	}
 	
 </script>
 
