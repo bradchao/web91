@@ -94,6 +94,18 @@ public class BradUtils {
 	}
 	
 	public static String order2JSON(SortedMap[] rows) {
+		/*
+		 * {
+		 * 	'Customer': ....,
+		 * 	'Employee': ....,
+		 * 	'details: [
+		 * 				{
+		 * 					},
+		 * 				{
+		 * 					},
+		 * 				]
+		 * }
+		 */
 		JSONObject root = new JSONObject();
 		if (rows.length > 0) {
 			root.put("Customer", rows[0].getOrDefault("CustomerID", ""));

@@ -2,14 +2,6 @@
     pageEncoding="UTF-8" import="tw.brad.apis.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>     
-<%
-/*
-SELECT * FROM orderdetails od
-JOIN orders o ON (od.OrderID = o.OrderID)
-JOIN products p ON (od.ProductID = p.ProductID)
-WHERE od.OrderID = ?
-*/
-%>
 <c:catch var='err'>
 	<sql:setDataSource
 		driver="com.mysql.cj.jdbc.Driver"
