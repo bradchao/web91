@@ -6,6 +6,7 @@
 	int lottery = obj.getLottery();
 	
 	session.setAttribute("obj", obj);
+	session.setMaxInactiveInterval(10);
 	
 	
 %>
