@@ -5,6 +5,15 @@
 <c:if test="${empty member.account }">
 	<c:redirect url="login.jsp" />
 </c:if>    
+<c:if test="${!empty param.delid }">
+	<sql:update dataSource="jdbc/brad">
+		DELETE FROM member WHERE id = ?
+		<sql:param>${param.delid }</sql:param>
+	</sql:update>
+</c:if>
+
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +27,36 @@
 	<img alt="no icon" src="data:image/png; base64, ${member.icon }">
 	<a href="logout.jsp">Logout</a>
 	<hr />
-	
+	<a href='addMember.jsp'>Add Member</a>
+	<hr />
+	<table border="1" width="100%">
+		<tr>
+			<th>ID</th>
+			<th>Account</th>
+			<th>Name</th>
+			<th>Delete</th>
+		</tr>
+		<sql:query var="result" dataSource="jdbc/brad">
+			SELECT * FROM member
+		</sql:query>
+		<script>
+			function delAlert(who){
+				var isDel = confirm("是否刪除 *" + who + "* ?");
+				return isDel;
+			}
+		</script>
+		<c:forEach items="${result.rows }" var="row">
+			<tr>
+				<td>${row.id }</td>
+				<td>${row.account }</td>
+				<td>${row.name }</td>
+				<td><a href="?delid=${row.id }" onclick="return delAlert('${row.name }');">Delete</a></td>
+			</tr>
+		</c:forEach>
+		
+		
+		
+	</table>
 	
 	</body>
 </html>
