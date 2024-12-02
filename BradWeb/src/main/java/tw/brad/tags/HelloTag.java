@@ -11,7 +11,7 @@ import jakarta.servlet.jsp.tagext.SimpleTagSupport;
 public class HelloTag extends SimpleTagSupport {
 	private String name;
 	
-	public void setPname(String pname) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
