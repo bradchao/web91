@@ -9,12 +9,24 @@
   <tag>
     <name>hello</name>
     <tag-class>tw.brad.tags.HelloTag</tag-class>
-    <body-content>empty</body-content>
+    <body-content>scriptless</body-content>	<!-- empty => no body; scriptless => has body -->
     <attribute>
        <name>name</name>
-       <required>false</required>
+       <required>true</required>
        <rtexprvalue>true</rtexprvalue> <!-- 是否支援 EL -->
     </attribute>
   </tag>  
+
+  <tag>
+    <name>hello2</name>
+    <tag-class>tw.brad.tags.HelloTag</tag-class>
+    <body-content>scriptless</body-content>	<!-- empty => no body; scriptless => has body -->
+    <attribute>
+       <name>name</name>
+       <required>true</required>
+       <rtexprvalue>true</rtexprvalue> <!-- 是否支援 EL -->
+    </attribute>
+  </tag>  
+
   	
 </taglib>

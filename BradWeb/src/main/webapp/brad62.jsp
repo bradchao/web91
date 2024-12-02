@@ -9,7 +9,12 @@
 	</head>
 	<body>
 	I am brad62<hr />
-	<brad:hello />
+	<brad:hello2 name="BradV2">
+		
+	</brad:hello2>
+	<%= (int)(Math.random()*49+1) %>
+	<hr />
+	<brad:hello name="Eric"></brad:hello>
 	
 	
 	</body>

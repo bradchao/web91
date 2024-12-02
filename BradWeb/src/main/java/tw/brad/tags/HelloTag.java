@@ -29,6 +29,9 @@ public class HelloTag extends SimpleTagSupport {
 		JspFragment fragment = getJspBody();
 		if (fragment != null) {
 			out.print("I am HelloTag JspFragment<br />");
+			
+			
+			
 			fragment.invoke(out);
 		}
 		
