@@ -1,9 +1,18 @@
 package tw.brad.apis;
 
 public class Member {
-	private int id;
+	private long id;
 	private String account, passwd, name;
+	private String icon;
 	
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
 	public String getAccount() {
 		return account;
 	}
@@ -28,11 +37,11 @@ public class Member {
 		this.name = name;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
