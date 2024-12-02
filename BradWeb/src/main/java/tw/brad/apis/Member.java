@@ -3,7 +3,7 @@ package tw.brad.apis;
 public class Member {
 	private long id;
 	private String account, passwd, name;
-	private String icon;
+	private String icon;		// base64 format
 	
 	public String getIcon() {
 		return icon;

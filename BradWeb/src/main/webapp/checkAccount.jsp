@@ -28,11 +28,14 @@
 			member.setPasswd((String)data.get("passwd"));
 			member.setName((String)data.get("name"));
 			
-			
-			byte[] icon = (byte[])data.get("icon");
-			String iconBase64 = Base64.getEncoder().encodeToString(icon);
-			
-			member.setIcon(iconBase64);
+			try{
+				byte[] icon = (byte[])data.get("icon");
+				String iconBase64 = Base64.getEncoder().encodeToString(icon);
+				
+				member.setIcon(iconBase64);
+			}catch(Exception e){
+				member.setIcon("");
+			}
 			
 			session.setAttribute("member", member);
 		%>
