@@ -14,6 +14,7 @@
 </sql:query>
 <c:if test="${rs.rowCount == 0 }">
 	<c:redirect url="login.jsp" />
+	Debug1
 </c:if>
 <c:choose>
 	<c:when test="${BCrypt.checkpw(param.passwd, rs.rows[0].passwd) }">
@@ -40,9 +41,11 @@
 			session.setAttribute("member", member);
 		%>
 		<c:redirect url="main.jsp" />
+		debug2
 	</c:when>
 	<c:otherwise>
 		<c:redirect url="login.jsp"/>
+		debug3
 	</c:otherwise>
 </c:choose>
 

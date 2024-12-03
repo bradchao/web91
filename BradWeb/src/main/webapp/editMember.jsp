@@ -1,3 +1,6 @@
+<%@page import="java.util.SortedMap"%>
+<%@page import="java.util.Base64"%>
+<%@page import="jakarta.servlet.jsp.jstl.sql.Result"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"  import="tw.brad.apis.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
@@ -17,8 +20,18 @@
 	</sql:query>
 	<c:if test="${rs.rowCount == 0 }"><c:redirect url="main.jsp" /></c:if>
 	<%
-	
-	
+		// rs
+		Result rs = (Result)pageContext.getAttribute("rs");
+		SortedMap row = rs.getRows()[0];
+		try{
+			byte[] icon = (byte[])row.get("icon");
+			String iconBase64 =  Base64.getEncoder().encodeToString(icon);
+			
+			row.put("icon", iconBase64);
+		}catch(Exception e){
+			row.put("icon", "");
+		}
+		
 	%>
 </c:if> 
 
@@ -38,7 +51,7 @@
 		Account: <input name="account" id="account" value="${rs.rows[0].account }" /><br />
 		Password: <input type="password" name="passwd" /><br />
 		Name: <input name="name" value="${rs.rows[0].name }" /><br />
-		Icon: <img src="" /><br />
+		Icon: <img src="data:image/png; base64, ${rs.rows[0].icon }" /><br />
 		<input type="submit" value="Update" />
 	</form>		
 	
