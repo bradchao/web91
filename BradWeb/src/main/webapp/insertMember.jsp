@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,15 +9,18 @@
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/brad", "root", "");
 	
+	String account = request.getParameter("account");
+	String passwd = BCrypt.hashpw(request.getParameter("passwd"), BCrypt.gensalt()) ;
+	String name = request.getParameter("name");
 	
-	byte[] buf =  (byte[])request.getAttribute("icon");
+	byte[] icon =  (byte[])request.getAttribute("icon");
+	String sql = "INSERT INTO member (account,passwd,name,icon) VALUES (?,?,?,?)";
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, account);	
+	pstmt.setString(2, passwd);	
+	pstmt.setString(3, name);	
+	pstmt.setBytes(4, icon);
 	
-	
-	
-	pstmt.setBytes(4, buf);
 	pstmt.executeUpdate();
-
+	response.sendRedirect("main.jsp");
 %>
-
-
-${rs }

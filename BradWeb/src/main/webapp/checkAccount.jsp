@@ -42,7 +42,7 @@
 		<c:redirect url="main.jsp" />
 	</c:when>
 	<c:otherwise>
-		<c:redirect url="login.jsp" />
+		<c:redirect url="login.jsp"/>
 	</c:otherwise>
 </c:choose>
 
