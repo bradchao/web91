@@ -128,6 +128,40 @@ public class BradUtils {
 		return root.toString();
 	}
 	
+	public static String gift2JSON(SortedMap[] rows) {
+		/*
+		 * {
+		 * 	'count': ....,
+		 * 	'data: [
+		 * 				{
+		 * 					'id': xxx,
+		 * 					'name': xxx,
+		 * 					'feature': xxx,
+		 * 					'pic': xxx,
+		 * 				},
+		 * 				{
+		 * 					},
+		 * 			]
+		 * }
+		 */
+		JSONObject root = new JSONObject();
+		root.put("count", rows.length);
+			
+		JSONArray details = new JSONArray();
+		for (int i=0; i<rows.length; i++) {
+			SortedMap<String, String> row = rows[i];
+			JSONObject detail = new JSONObject();
+			detail.put("id", row.getOrDefault("id", ""));
+			detail.put("name", row.getOrDefault("name", ""));
+			detail.put("feature", row.getOrDefault("feature", ""));
+			detail.put("pic", row.getOrDefault("pic", ""));
+			
+			details.put(detail);
+		}
+		
+		root.put("data", details);
+		return root.toString();
+	}
 	
 	
 }
