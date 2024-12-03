@@ -41,6 +41,7 @@ public class MyServer {
 			try {
 				userSession.getBasicRemote().sendText(mesg);
 			} catch (IOException e) {
+				System.out.println(e);
 			}
 		}
 		
@@ -49,12 +50,14 @@ public class MyServer {
 	@OnClose
 	public void onClose(Session session) {
 		System.out.println("onClose");
+		users.remove(session.getId());
+		sessions.remove(session);
 		
 	}
 	
 	@OnError
 	public void onError(Session session, Throwable t) {
-		System.out.println("onError");
+		System.out.println("onError:" + t.toString());
 		
 	}
 	
