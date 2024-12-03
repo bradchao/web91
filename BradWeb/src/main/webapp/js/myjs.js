@@ -37,7 +37,11 @@ window.onload = function(){
 			console.log("onError");
 		}
 		webSocket.onmessage = function(event){
-			console.log("onMessage");
+			console.log("onMessage:" + event.data);
+			var mesgObj = JSON.parse(event.data);
+			log.innerHTML += mesgObj.message + '<br />';
+			
+			
 		}
 	}
 		
