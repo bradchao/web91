@@ -29,7 +29,7 @@
 	
 	</head>
 	<body>
-	
+	Add Member<hr />
 	<form action="AddMember" method="post" enctype="multipart/form-data">
 		Account: <input name="account" id="account" onblur="isAccountExist()" /><span id="mesg"></span><br />
 		Password: <input type="password" name="passwd" /><br />
