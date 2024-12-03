@@ -1,5 +1,4 @@
-<%@page import="java.util.Base64"%>
-<%@page import="java.util.SortedMap"%>
+<%@page import="java.util.*"%>
 <%@page import="jakarta.servlet.jsp.jstl.sql.Result"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="tw.brad.apis.*" %>
@@ -18,33 +17,25 @@
 <c:choose>
 	<c:when test="${BCrypt.checkpw(param.passwd, rs.rows[0].passwd) }">
 		<%
-			Result result = (Result)pageContext.getAttribute("rs");
-			SortedMap[] datas = result.getRows();
-			SortedMap data = datas[0];
-			
-			Member member = new Member();
-			member.setId((Long)data.get("id"));
-			member.setAccount((String)data.get("account"));
-			member.setPasswd((String)data.get("passwd"));
-			member.setName((String)data.get("name"));
-			
+			// rs
+			Result rs = (Result)pageContext.getAttribute("rs");
+			SortedMap row = rs.getRows()[0];
 			try{
-				byte[] icon = (byte[])data.get("icon");
-				String iconBase64 = Base64.getEncoder().encodeToString(icon);
+				byte[] icon = (byte[])row.get("icon");
+				String iconBase64 =  Base64.getEncoder().encodeToString(icon);
 				
-				member.setIcon(iconBase64);
+				row.put("icon", iconBase64);
 			}catch(Exception e){
-				member.setIcon("");
+				row.put("icon", "");
 			}
-			
-			session.setAttribute("member", member);
-		%>
+		%>	
+	
+	
+		<c:set var="member" value="${rs.rows[0] }" scope="session" />
 		<c:redirect url="main.jsp" />
 	</c:when>
 	<c:otherwise>
-		<c:redirect url="login.jsp"/>
+		<c:redirect url="login.jsp" />
 	</c:otherwise>
 </c:choose>
-
-
-
+    
