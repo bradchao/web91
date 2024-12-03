@@ -5,6 +5,9 @@
 <c:if test="${empty member.account }">
 	<c:redirect url="login.jsp" />
 </c:if> 
+
+
+
     
 <!DOCTYPE html>
 <html>
@@ -27,7 +30,7 @@
 	</head>
 	<body>
 	
-	<form action="addMember.jsp" method="post" enctype="multipart/form-data">
+	<form action="AddMember" method="post" enctype="multipart/form-data">
 		Account: <input name="account" id="account" onblur="isAccountExist()" /><span id="mesg"></span><br />
 		Password: <input type="password" name="passwd" /><br />
 		Name: <input name="name" /><br />
