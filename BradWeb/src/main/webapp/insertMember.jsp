@@ -24,3 +24,13 @@
 	pstmt.executeUpdate();
 	response.sendRedirect("main.jsp");
 %>
+<%   
+/*
+<sql:update>
+	INSERT
+</sql:update>
+*/
+%>
+
+
+
