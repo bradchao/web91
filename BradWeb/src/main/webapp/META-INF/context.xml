@@ -8,5 +8,9 @@
 		password=""
 		driverClassName="com.mysql.cj.jdbc.Driver"
 		url="jdbc:mysql://localhost/brad"
+		maxTotal="20"
+		maxIdle="10"
+		minIdle="5"
+		maxWaitMillis="-1"
 	/>
 </Context>
